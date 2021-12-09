@@ -104,10 +104,13 @@ name="alignment">
 <map name="OneOnX" >beast.math.distributions.OneOnX</map>
 
 
-<run id="mcmc" spec="MCMC" chainLength="100000000" storeEvery="1000">
+<run id="mcmc" spec="MCMC" chainLength="150000000" storeEvery="1000">
     <state id="state" spec="State" storeEvery="1000">
         <tree id="Tree.t:Henipa" spec="beast.evolution.tree.Tree" name="stateNode">
             <trait id="dateTrait.t:Henipa" spec="beast.evolution.tree.TraitSet" dateFormat="M/dd/yyyy" traitname="date">
+                
+                
+                
                 
                 
                                     408_forced_SPADES_contig_16740=3/15/2019,
@@ -190,15 +193,15 @@ HQ660129=7/31/2009
                     
                                 
                                 
+                            
+                            
+                            
                             <taxa id="TaxonSet.Henipa" spec="TaxonSet">
                     <alignment idref="Henipa"/>
                 </taxa>
             </trait>
             <taxonset idref="TaxonSet.Henipa"/>
         </tree>
-        <parameter id="clockRate.c:Henipa" spec="parameter.RealParameter" name="stateNode">7.9E-4</parameter>
-        <parameter id="bPopSizes.t:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">380.0</parameter>
-        <stateNode id="bGroupSizes.t:Henipa" spec="parameter.IntegerParameter" dimension="5">1</stateNode>
         <parameter id="gammaShape.s:Henipa" spec="parameter.RealParameter" name="stateNode">1.0</parameter>
         <parameter id="rateAC.s:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
         <parameter id="rateAG.s:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
@@ -206,6 +209,9 @@ HQ660129=7/31/2009
         <parameter id="rateCG.s:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
         <parameter id="rateGT.s:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">1.0</parameter>
         <parameter id="proportionInvariant.s:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode" upper="1.0">1.0E-4</parameter>
+        <parameter id="bPopSizes.t:Henipa" spec="parameter.RealParameter" lower="0.0" name="stateNode">380.0</parameter>
+        <stateNode id="bGroupSizes.t:Henipa" spec="parameter.IntegerParameter">1</stateNode>
+        <parameter id="clockRate.c:Henipa" spec="parameter.RealParameter" name="stateNode">7.9E-4</parameter>
         <parameter id="freqParameter.s:Henipa" spec="parameter.RealParameter" dimension="4" lower="0.0" name="stateNode" upper="1.0">0.25</parameter>
     </state>
 
@@ -223,8 +229,8 @@ HQ660129=7/31/2009
             <distribution id="MarkovChainedPopSizes.t:Henipa" spec="beast.math.distributions.MarkovChainDistribution" jeffreys="true" parameter="@bPopSizes.t:Henipa"/>
             <prior id="ClockPrior.c:Henipa" name="distribution" x="@clockRate.c:Henipa">
                 <LogNormal id="LogNormalDistributionModel.12" meanInRealSpace="true" name="distr">
-                    <parameter id="RealParameter.83" spec="parameter.RealParameter" estimate="false" name="M">7.9E-4</parameter>
-                    <parameter id="RealParameter.84" spec="parameter.RealParameter" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
+                    <parameter id="RealParameter.81" spec="parameter.RealParameter" estimate="false" name="M">7.9E-4</parameter>
+                    <parameter id="RealParameter.82" spec="parameter.RealParameter" estimate="false" lower="0.0" name="S" upper="5.0">1.25</parameter>
                 </LogNormal>
             </prior>
             <prior id="FrequenciesPrior.s:Henipa" name="distribution" x="@freqParameter.s:Henipa">
@@ -283,12 +289,19 @@ HQ660129=7/31/2009
         </distribution>
     </distribution>
 
-    <operator id="StrictClockRateScaler.c:Henipa" spec="ScaleOperator" parameter="@clockRate.c:Henipa" weight="3.0"/>
+    <operator id="gammaShapeScaler.s:Henipa" spec="ScaleOperator" parameter="@gammaShape.s:Henipa" scaleFactor="0.5" weight="0.1"/>
 
-    <operator id="strictClockUpDownOperator.c:Henipa" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
-        <up idref="clockRate.c:Henipa"/>
-        <down idref="Tree.t:Henipa"/>
-    </operator>
+    <operator id="RateACScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAC.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateAGScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAG.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateATScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAT.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateCGScaler.s:Henipa" spec="ScaleOperator" parameter="@rateCG.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="RateGTScaler.s:Henipa" spec="ScaleOperator" parameter="@rateGT.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+
+    <operator id="proportionInvariantScaler.s:Henipa" spec="ScaleOperator" parameter="@proportionInvariant.s:Henipa" scaleFactor="0.5" weight="0.1"/>
 
     <operator id="BayesianSkylineTreeScaler.t:Henipa" spec="ScaleOperator" scaleFactor="0.5" tree="@Tree.t:Henipa" weight="3.0"/>
 
@@ -310,19 +323,12 @@ HQ660129=7/31/2009
         <intparameter idref="bGroupSizes.t:Henipa"/>
     </operator>
 
-    <operator id="gammaShapeScaler.s:Henipa" spec="ScaleOperator" parameter="@gammaShape.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+    <operator id="StrictClockRateScaler.c:Henipa" spec="ScaleOperator" parameter="@clockRate.c:Henipa" weight="3.0"/>
 
-    <operator id="RateACScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAC.s:Henipa" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateAGScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAG.s:Henipa" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateATScaler.s:Henipa" spec="ScaleOperator" parameter="@rateAT.s:Henipa" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateCGScaler.s:Henipa" spec="ScaleOperator" parameter="@rateCG.s:Henipa" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="RateGTScaler.s:Henipa" spec="ScaleOperator" parameter="@rateGT.s:Henipa" scaleFactor="0.5" weight="0.1"/>
-
-    <operator id="proportionInvariantScaler.s:Henipa" spec="ScaleOperator" parameter="@proportionInvariant.s:Henipa" scaleFactor="0.5" weight="0.1"/>
+    <operator id="strictClockUpDownOperator.c:Henipa" spec="UpDownOperator" scaleFactor="0.75" weight="3.0">
+        <up idref="clockRate.c:Henipa"/>
+        <down idref="Tree.t:Henipa"/>
+    </operator>
 
     <operator id="FrequenciesExchanger.s:Henipa" spec="DeltaExchangeOperator" delta="0.01" weight="0.1">
         <parameter idref="freqParameter.s:Henipa"/>
@@ -334,10 +340,6 @@ HQ660129=7/31/2009
         <log idref="prior"/>
         <log idref="treeLikelihood.Henipa"/>
         <log id="TreeHeight.t:Henipa" spec="beast.evolution.tree.TreeHeightLogger" tree="@Tree.t:Henipa"/>
-        <log idref="clockRate.c:Henipa"/>
-        <log idref="BayesianSkyline.t:Henipa"/>
-        <log idref="bPopSizes.t:Henipa"/>
-        <log idref="bGroupSizes.t:Henipa"/>
         <log idref="gammaShape.s:Henipa"/>
         <log idref="rateAC.s:Henipa"/>
         <log idref="rateAG.s:Henipa"/>
@@ -345,6 +347,10 @@ HQ660129=7/31/2009
         <log idref="rateCG.s:Henipa"/>
         <log idref="rateGT.s:Henipa"/>
         <log idref="proportionInvariant.s:Henipa"/>
+        <log idref="BayesianSkyline.t:Henipa"/>
+        <log idref="bPopSizes.t:Henipa"/>
+        <log idref="bGroupSizes.t:Henipa"/>
+        <log idref="clockRate.c:Henipa"/>
         <log idref="freqParameter.s:Henipa"/>
     </logger>
 
