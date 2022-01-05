@@ -77,7 +77,7 @@ mergedat <- dplyr::select(mergedat, new_label, names(mergedat)[1:9])
 p = ggtree(tree) + theme_tree2()
 p$data$x = p$data$x - max(p$data$x) #+ 463
 #remove HPD that are the more recent -- only include from >500 yrs
-p$data$height_0.95_HPD[p$data$height<400] <- NA
+#p$data$height_0.95_HPD[p$data$height<400] <- NA
 #add the big one
 #p$data$length_0.95_HPD[p$data$height==max(p$data$height)] <- p$data$height_range[p$data$height==max(p$data$height)] 
 
