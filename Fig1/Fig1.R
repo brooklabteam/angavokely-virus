@@ -154,9 +154,9 @@ pies <- ddply(map.dat, .(bat_species, roost_site, latitude_s, longitude_e, plot_
 
 
 
-tot_sum = ddply(pies,.(bat_species), summarise,N=sum(value))
+tot_sum = ddply(pies,.(bat_species, roost_site), summarise,N=sum(value))
 
-pies <- merge(pies, tot_sum, by=c("bat_species"), all.x=T)
+pies <- merge(pies, tot_sum, by=c("bat_species", "roost_site"), all.x=T)
 
 pies$plot_class <- factor(pies$plot_class, levels=c( "henipavirus pos", "henipavirus neg"))
 
@@ -238,7 +238,7 @@ Fig1a <- p1+
                          style = north_arrow_fancy_orienteering)+
   geom_text_repel(segment.colour="black")+
   ggnewscale::new_scale_fill() +
-  geom_scatterpie(aes(x=x2, y=y2, r=(N/100)), 
+  geom_scatterpie(aes(x=x2, y=y2, r=(N/50)), 
                   data = pies, cols="plot_class", long_format=TRUE) +
   theme_bw() +theme(panel.grid = element_blank(),
                     plot.title = element_text(color="black", size=12, face="bold"),
@@ -250,11 +250,11 @@ Fig1a <- p1+
                     legend.title=element_blank(),
                     legend.text = element_text(size=10)) +
   scale_fill_manual(values=colz) +
-  coord_sf(xlim=c(43,55))#+
-  #geom_scatterpie_legend(log10(c(10,100)/1.2),
-   #                      x=54.5, y=-23.5, 
-    #                     n=2,
-     #                    labeller = function(x) paste(10^(x)*1.2,"indiv"))
+  coord_sf(xlim=c(43,56))+
+  geom_scatterpie_legend((c(50,100)/50),
+                         x=52, y=-24, 
+                         n=2,
+                         labeller = function(x) paste((x)*50,"indiv"))
 
 
 
