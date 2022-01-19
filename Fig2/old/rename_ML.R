@@ -26,13 +26,8 @@ dat$new_name[dat$n==1] <- sapply(strsplit(dat$names[dat$n==1], "_"), function(x)
 dat$new_name[dat$n>1] <- paste0(sapply(strsplit(dat$names[dat$n>1], "_"), function(x) x[[1]]), "_", sapply(strsplit(dat$names[dat$n>1], "_"), function(x) x[[2]]))
 dat$new_name[dat$new_name=="408_forced"] <- "AngV"
 dat$new_name <-sub(pattern=".", replacement = "_", x=dat$new_name, fixed=T)
-write.csv(dat, file = "ML_dat_orthopneumovirinae.csv", row.names = F)
 
-#and load
-dat <- read.csv(file =  "ML_dat_orthopneumovirinae.csv", stringsAsFactors = F, header = T)
-head(dat)
-dat$add_name <- paste0(dat$new_name, "_", dat$word_name)
 
-write.fasta(seq, names = dat$add_name, file.out = "Orthoparamyxovirinae_newnames.fasta")
+write.fasta(seq, names = dat$new_name, file.out = "Orthoparamyxovirinae_newnames.fasta")
 
 #now send to alignment, then Modeltest-NG and RAxML

@@ -1,0 +1,41 @@
+
+RAxML-NG v. 1.0.0-master released on 07.08.2020 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz, 20 cores, 62 GB RAM
+
+RAxML-NG was called at 18-Jan-2022 15:33:32 as follows:
+
+/global/home/users/cbrook/raxml-ng/raxml-ng-mpi --check --msa orthoMLalign.fasta --model GTR+I+G4 --prefix T1
+
+Analysis options:
+  run mode: Alignment validation
+  start tree(s): 
+  random seed: 1642548813
+  SIMD kernels: AVX
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+[00:00:00] Reading alignment from file: orthoMLalign.fasta
+[00:00:00] Loaded alignment with 37 taxa and 34578 sites
+
+Alignment comprises 1 partitions and 34578 sites
+
+Partition 0: noname
+Model: GTR+FO+I+G4m
+Alignment sites: 34578
+Gaps: 50.95 %
+Invariant sites: 23.44 %
+
+
+Alignment can be successfully read by RAxML-NG.
+
+
+Execution log saved to: /global/home/users/cbrook/raxml-ng/ortho_tree/T1.raxml.log
+
+Analysis started: 18-Jan-2022 15:33:32 / finished: 18-Jan-2022 15:33:33
+
+Elapsed time: 0.766 seconds
+

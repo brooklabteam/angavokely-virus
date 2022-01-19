@@ -1,0 +1,76 @@
+names,n,new_name,word_name
+"NC_055167_1 |Bank vole virus strain RP-12, complete genome",3,NC_055167,Bank_vole_virus
+"NC_055168_1 |Pohorje myodes paramyxovirus 1 isolate TT02/05, complete genome",3,NC_055168,Pohorje_myodes_paramyxovirus
+"NC_055508_1 |Alston virus isolate Alstonville, complete genome",3,NC_055508,Alston_virus_
+"NC_043539_1 |Mount Mabu Lophuromys virus 1 isolate MOZ135_1, complete genome",4,NC_043539,Mount_Mabu_Lophuromys_virus_1
+"NC_043540_1 |Mount Mabu Lophuromys virus 2 isolate MOZ135_2, complete genome",4,NC_043540,Mount_Mabu_Lophuromys_virus_2
+"NC_040796_1 |Avian paramyxovirus 20 isolate APMV-20/gull/Kazakhstan/5976/2014, complete genome",3,NC_040796,Avian_paramyxovirus
+"NC_038270_1 |Simian Agent 10, complete genome",3,NC_038270,Simian_Agent_10
+"NC_038271_1 |Bat Paramyxovirus Epo_spe/AR1/DRC/2009, complete genome",4,NC_038271,Bat_Paramyxovirus_Epo
+"NC_039015_1 |Avian paramyxovirus 14 isolate APMV14/duck/Japan/11OG0352/2011, complete genome",3,NC_039015,Avian_paramyxovirus_14
+"NC_039016_1 |Avian paramyxovirus UPO216 isolate APMV-15/WB/Kr/UPO216/2014, complete genome",3,NC_039016,Avian_paramyxovirus_APMV_15
+"NC_039017_1 |Antarctic penguin virus A, complete genome",3,NC_039017,Antarctic_penguin_virus_A
+"NC_039018_1 |Antarctic penguin virus B, complete genome",3,NC_039018,Antarctic_penguin_virus_B
+"NC_039019_1 |Antarctic penguin virus C, complete genome",3,NC_039019,Antarctic_penguin_virus_C
+"NC_039194_1 |Avian paramyxovirus 6 strain APMV-6/Goose/FarEast/4440/2003, complete genome",3,NC_039194,Avian_paramyxovirus_6
+"NC_039195_1 |Avian paramyxovirus 8 strain goose/Delaware/1053/76, complete genome",3,NC_039195,Avian_paramyxovirus_8
+"NC_039196_1 |Feline morbillivirus strain 761U, complete genome",3,NC_039196,Feline_morbillivirus
+"NC_039197_1 |Menangle virus isolate Australia/bat/2009/Cedar Grove, complete genome",3,NC_039197,Menangle_virus
+"NC_039198_1 |Teviot virus isolate Cedar Grove, complete genome",3,NC_039198,Teviot_virus
+"NC_039223_1 |Newcastle disease virus isolate JSD0812, complete genome",3,NC_039223,Newcastle_disease_virus
+"NC_039230_1 |Avian paramyxovirus 2 strain APMV-2/Chicken/California/Yucaipa/56, complete genome",3,NC_039230,Avian_paramyxovirus_2
+"NC_034968_1 |Avian paramyxovirus 15 isolate APMV-15/calidris_fuscicollis/Brazil/RS-1177/2012, partial genome",4,NC_034968,Avian_paramyxovirus_15
+"NC_030231_1 |Avian paramyxovirus goose/Shimane/67/2000 viral cRNA, complete genome",3,NC_030231,Avian_paramyxovirus_goose
+"NC_028362_1 |Caprine parainfluenza virus 3 strain JS2013, complete genome",3,NC_028362,Caprine_parainfluenza_virus_3
+"NC_028249_1 |Phocine distemper virus strain PDV/Wadden_Sea.NLD/1988, complete genome",4,NC_028249,Phocine_distemper_virus_strain_PDV
+"NC_025386_1 |Salem virus, complete genome",3,NC_025386,Salem_virus
+"NC_025390_1 |Avian paramyxovirus 9 strain duck/New York/22/1978, complete genome",3,NC_025390,Avian_paramyxovirus_9
+"NC_025402_1 |Porcine parainfluenza virus 1 strain S206N, complete genome",3,NC_025402,Porcine_parainfluenza_virus_1
+"NC_025403_1 |Achimota virus 1, complete genome",3,NC_025403,Achimota_virus_1
+"NC_025404_1 |Achimota virus 2, complete genome",3,NC_025404,Achimota_virus_2
+"NC_025407_1 |Avian paramyxovirus 11 isolate common_snipe/France/100212/2010, complete genome",4,NC_025407,Avian_paramyxovirus_11
+"NC_025410_1 |Tuhoko virus 1, complete genome",3,NC_025410,Tuhoko_virus_1
+"NC_025343_1 |Sosuga virus isolate 2012, complete genome",3,NC_025343,Sosuga_virus
+"NC_025347_1 |Avian paramyxovirus 7 strain APMV-7/dove/Tennessee/4/75, complete genome",3,NC_025347,Avian_paramyxovirus_7
+"NC_025348_1 |Tuhoko virus 2, complete genome",3,NC_025348,Tuhoko_virus_2
+"NC_025349_3 |Avian paramyxovirus penguin/Falkland Islands/324/2007, complete genome",3,NC_025349,Avian_paramyxovirus_penguin
+"NC_025350_1 |Tuhoko virus 3, complete genome",3,NC_025350,Tuhoko_virus_3
+"NC_025351_1 |Cedar virus isolate CG1a, complete genome",3,NC_025351,Cedar_virus
+"NC_025352_1 |Mojiang virus isolate Tongguan1, complete genome",3,NC_025352,Mojiang_virus
+"NC_025355_1 |Tailam virus strain TL8K, complete genome",3,NC_025355,Tailam_virus_TL8K
+"NC_025360_1 |Atlantic salmon paramyxovirus isolate ASPV/Yrkje371/95, complete genome",3,NC_025360,Atlantic_salmon_paramyxovirus_isolate_ASPV
+"NC_025361_1 |Avian paramyxovirus 5 strain budgerigar/Kunitachi/74, complete genome",3,NC_025361,Avian_paramyxovirus_5
+"NC_025363_1 |Avian paramyxovirus 12 isolate Wigeon/Italy/3920_1/2005, complete genome",4,NC_025363,Avian_paramyxovirus_12
+"NC_025373_1 |Avian paramyxovirus 3 strain turkey/Wisconsin/68, complete genome",3,NC_025373,Avian_paramyxovirus_3
+"NC_025256_1 |Bat Paramyxovirus Eid_hel/GH-M74a/GHA/2009, complete genome",4,NC_025256,Bat_Paramyxovirus_Eid
+"NC_021928_1 |Human parainfluenza virus 4a viral cRNA, complete genome, strain: M-25",3,NC_021928,Human_parainfluenza_virus_4a
+"NC_019531_1 |Avian paramyxovirus 4 strain APMV-4/duck/Delaware/549227/2010, complete genome",3,NC_019531,Avian_paramyxovirus_4
+"NC_017937_1 |Nariva virus, complete genome",3,NC_017937,Nariva_virus
+"NC_009640_1 |Porcine rubulavirus, complete genome",3,NC_009640,Porcine_rubulavirus
+"NC_009489_1 |Mapuera virus, complete genome",3,NC_009489,Mapuera_virus
+"NC_007803_1 |Beilong virus, complete genome",3,NC_007803,Beilong_virus
+"NC_007454_1 |J-virus, complete genome",3,NC_007454,J_virus
+"NC_006430_1 |Parainfluenza virus 5, complete genome",3,NC_006430,Parainfluenza_virus_5
+"NC_006428_1 |Simian virus 41, complete genome",3,NC_006428,Simian_virus_41
+NC_006383_2 |Peste des petits ruminants virus complete genome,3,NC_006383,Peste_des_petits_ruminants_virus
+"NC_006296_2 |Rinderpest virus (strain Kabete O), complete genome",3,NC_006296,Rinderpest_virus
+"NC_005339_1 |Mossman virus, complete genome",3,NC_005339,Mossman_virus
+"NC_005283_1 |Dolphin morbillivirus, complete genome",3,NC_005283,Dolphin_morbillivirus
+"NC_005084_2 |Fer-de-lance virus, complete genome",3,NC_005084,Fer_de_lance_virus
+"NC_005036_1 |Goose paramyxovirus SF02, complete genome",3,NC_005036,Goose_paramyxovirus_SF02
+"NC_003461_1 |Human parainfluenza virus 1, complete genome",3,NC_003461,Human_parainfluenza_virus_1
+"NC_004074_1 |Tioman virus, complete genome",3,NC_004074,Tioman_virus
+"NC_002728_1 |Nipah virus, complete genome",3,NC_002728,Nipah_virus
+"NC_002199_1 |Tupaia paramyxovirus, complete genome",3,NC_002199,Tupaia_paramyxovirus
+"NC_002200_1 |Mumps orthorubulavirus genomic RNA, complete genome",3,NC_002200,Mumps_orthorubulavirus
+"NC_002161_1 |Bovine parainfluenza virus 3, complete genome",3,NC_002161,Bovine_parainfluenza_virus_3
+"NC_001498_1 |Measles virus, complete genome",3,NC_001498,Measles_virus
+"NC_001796_2 |Human parainfluenza virus 3, complete genome",3,NC_001796,Human_parainfluenza_virus_3
+"NC_001921_1 |Canine distemper virus, complete genome",3,NC_001921,Canine_distemper_virus
+"NC_001906_3 |Hendra virus, complete genome",3,NC_001906,Hendra_virus
+"NC_001552_1 |Sendai virus genomic RNA, antisense, complete sequence",3,NC_001552,Sendai_virus
+"NC_003443_1 |Human rubulavirus 2, complete genome",3,NC_003443,Human_rubulavirus_2
+AngV,1,AngV,AngV
+MZ574407,1,MZ574407,Gamak_virus
+MZ574408,1,MZ574408,Gamak_virus
+MZ574409,1,MZ574409,Daeryong_virus

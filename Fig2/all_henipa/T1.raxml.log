@@ -1,0 +1,41 @@
+
+RAxML-NG v. 1.0.0-master released on 07.08.2020 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Xeon(R) CPU E5-2670 v2 @ 2.50GHz, 20 cores, 62 GB RAM
+
+RAxML-NG was called at 18-Jan-2022 19:15:35 as follows:
+
+/global/home/users/cbrook/raxml-ng/raxml-ng-mpi --check --msa all_henipa_align.fasta --model GTR+I+G4 --prefix T1
+
+Analysis options:
+  run mode: Alignment validation
+  start tree(s): 
+  random seed: 1642562136
+  SIMD kernels: AVX
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+[00:00:00] Reading alignment from file: all_henipa_align.fasta
+[00:00:00] Loaded alignment with 77 taxa and 22909 sites
+
+Alignment comprises 1 partitions and 22909 sites
+
+Partition 0: noname
+Model: GTR+FO+I+G4m
+Alignment sites: 22909
+Gaps: 20.45 %
+Invariant sites: 27.94 %
+
+
+Alignment can be successfully read by RAxML-NG.
+
+
+Execution log saved to: /global/home/users/cbrook/raxml-ng/all_henipa/T1.raxml.log
+
+Analysis started: 18-Jan-2022 19:15:35 / finished: 18-Jan-2022 19:15:36
+
+Elapsed time: 0.861 seconds
+
