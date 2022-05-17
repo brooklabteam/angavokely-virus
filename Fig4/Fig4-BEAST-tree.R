@@ -112,7 +112,7 @@ p2 <- p1 %<+% mergedat +
   
 
 
-ggsave(file = paste0(homewd, "/final-figures/Fig4supp.png"),
+ggsave(file = paste0(homewd, "/final-figures/SuppFig1.png"),
        plot=p2,
        units="mm",  
        width=70, 
@@ -197,7 +197,7 @@ p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia
                geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="text", size=3.5, nudge_x=6000)
 
 
-ggsave(file = paste0(homewd, "/final-figures/Fig4.png"),
+ggsave(file = paste0(homewd, "/final-figures/Fig4B.png"),
        plot=p3,
        units="mm",  
        width=70, 
@@ -205,4 +205,19 @@ ggsave(file = paste0(homewd, "/final-figures/Fig4.png"),
        #limitsize = F,
        scale=3)#, 
 
+#and to find the MRCA
+#divergence of AngV:
 
+nodebranchAngV = MRCA(tree, which(tree@phylo$tip.label == "AngV | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "HQ660129 | GhV | Ghana | 2009 | Eidolon_helvum"))
+nodeBasal = MRCA(tree, which(tree@phylo$tip.label == "AngV | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "KF278639 | MojV | China | 2012 | Rattus_rattus"))
+
+dat.phylo <- p3$data
+head(dat.phylo)
+
+#and get the node of interest:
+subset(dat.phylo, node==nodebranchAngV) #9794 years
+subset(dat.phylo, node==nodeBasal) #11195 years
+
+#and the 95% HPD
+dat.phylo$height_0.95_HPD[[nodebranchAngV]] #6519.024 14023.649
+dat.phylo$height_0.95_HPD[[nodeBasal]] #7350.913 15904.564
