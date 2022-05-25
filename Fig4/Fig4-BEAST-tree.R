@@ -8,6 +8,9 @@ library(ggnewscale)
 library(lubridate)
 #library(rBt)
 library(treeio)
+library(png)
+library(grid)
+library(extrafont)
 
 
 #make Bayesian timetree from Henipavirus strict molecular clock model
@@ -51,10 +54,10 @@ mergedat$new_label <- paste0(mergedat$Accession_Num, " | ", mergedat$Name, " | "
 mrsd.dat <- as.Date(max(mergedat$Collection_Date))
 
 #convert x to date in the same form - "0" should equal the most recent date
-p = ggtree(tree) + theme_tree2()
+p = ggtree(tree) + theme_tree2(text=element_text(family = "Helvetica-Narrow"))# theme_set(theme_tree2(text=element_text(family = 'Helvetica-Narrow')))
 p$data$x = p$data$x - max(p$data$x) #+ 463
 
-p1 <- p + theme_tree2() + 
+p1 <- p + theme_tree2() +
     scale_x_continuous(breaks=c(-10000, -8000, -6000, -4000, -2000, 0),
     labels=c(10000, 8000, 6000, 4000, 2000,  0)) +
     xlab("years to MRCA")
@@ -141,10 +144,11 @@ nodeHeV2009 <- MRCA(tree, which(tree@phylo$tip.label == "JN255803 | HeV | Austra
 #highlight Mada
 
 #make tip labels a little bigger
+font_import()
 
 p2 <- p1 %<+% mergedat + 
   #geom_tiplab(size=3, nudge_x = 500) + #geom_nodelab(size=2,nudge_x = -15, nudge_y = .7) +
-  theme(legend.position = c(.1,.75)) +
+  theme(legend.position = c(.16,.75)) +
   geom_range(range='height_0.95_HPD', color='red', alpha=.5, size=1) +
   geom_nodepoint(aes(fill=posterior), shape=21, color="black", size=2, stroke=.1) +
   geom_tippoint(aes(color=virus), size=3) +
@@ -152,7 +156,7 @@ p2 <- p1 %<+% mergedat +
   guides( fill_continuous = guide_legend(order = 2, nrow = 1),col = guide_legend(order = 1)) +
   coord_cartesian(clip = "off", xlim=c(-14500, 20000)) +ggnewscale::new_scale_fill() +
   geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
-              alpha=.3,  show.legend=F, size=3.5, nudge_x=500) + scale_fill_manual(values=colz2)
+              alpha=.3,  show.legend=F, size=3.5, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
 
 
 
@@ -221,3 +225,8 @@ subset(dat.phylo, node==nodeBasal) #11195 years
 #and the 95% HPD
 dat.phylo$height_0.95_HPD[[nodebranchAngV]] #6519.024 14023.649
 dat.phylo$height_0.95_HPD[[nodeBasal]] #7350.913 15904.564
+
+
+
+############################################
+############################################
