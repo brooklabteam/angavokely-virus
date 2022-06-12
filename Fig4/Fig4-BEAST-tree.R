@@ -39,16 +39,17 @@ head(dat)
 tree@phylo$tip.label[tree@phylo$tip.label=="408_forced_SPADES_contig_16740"] <- "AngV"
 treedat$tip_name[treedat$tip_name=="408_forced_SPADES_contig_16740"] <- "AngV"
 treedat$beast_name[treedat$beast_name=="408_forced_SPADES_contig_16740"] <- "AngV"
-treedat$Accession_Num[treedat$beast_name=="AngV"] <- "AngV"
+treedat$Accession_Num[treedat$beast_name=="AngV"] <- "ON613535"
 
 mergedat <- merge(treedat, dat, by="Accession_Num", all.x = T, sort = F)
 head(mergedat)
-#mergedat$Collection_Date <- as.Date(mergedat$Collection_Date, format = "%d-%b-%Y")
-mergedat$Collection_Date <- as.Date(mergedat$Collection_Date)
+mergedat$Collection_Date <- as.Date(mergedat$Collection_Date, format = "%m/%d/%y")
+#mergedat$Collection_Date <- as.Date(mergedat$Collection_Date)
 mergedat$year <- year(mergedat$Collection_Date)
 #and add a new label
 mergedat$new_label <- paste0(mergedat$Accession_Num, " | ", mergedat$Name, " | ", mergedat$Locality,
                              " | ",  mergedat$year, " | ", mergedat$Host)
+#and where there is an
 
 
 mrsd.dat <- as.Date(max(mergedat$Collection_Date))
@@ -191,14 +192,14 @@ p2.9 <- p2.8 +
 
 
 
-p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | Sus_scrofa/Canis_familiaris/Homo_sapiens"), geom="text", size=3.5, nudge_x=10500)+
-               geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="text", size=3.5, nudge_x=9200)+
-               geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="text", size=3.5, nudge_x=8500)+
-               geom_nodelab(aes(subset=(node==nodeNiVBangHum), label = "NiV | Bangladesh | 2004-2014 | Homo_sapiens"), geom="text", size=3.5, nudge_x=7500)+
-               geom_nodelab(aes(subset=(node==nodeNiVBangHum2), label = "NiV | Bangladesh/India | 2004-2015 | Homo_sapiens"), geom="text", size=3.5, nudge_x=8500) +
-               geom_nodelab(aes(subset=(node==nodeHeV2007), label = "HeV | Australia | 2007 | Equus_f_caballus/Pteropus_sp"), geom="text", size=3.5, nudge_x=8500)+
-               geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="text", size=3.5, nudge_x=9000)+
-               geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="text", size=3.5, nudge_x=6000)
+p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | Sus_scrofa/Canis_familiaris/Homo_sapiens"), geom="label", size=2,  label.size = 0, nudge_x=4400, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="label",size=2,  label.size = 0, nudge_x=4000, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="label", size=2,  label.size = 0, nudge_x=3500, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangHum), label = "NiV | Bangladesh | 2004-2014 | Homo_sapiens"), geom="label", size=2,  label.size = 0,  nudge_x=3400, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangHum2), label = "NiV | Bangladesh/India | 2004-2015 | Homo_sapiens"),geom="label", size=2,  label.size = 0,  nudge_x=3600, family="Helvetica") +
+               geom_nodelab(aes(subset=(node==nodeHeV2007), label = "HeV | Australia | 2007 | Equus_f_caballus/Pteropus_sp"), geom="label", size=2,  label.size = 0,  nudge_x=3700, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="label", size=2,  label.size = 0,  nudge_x=4000, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="label", size=2,  label.size = 0,  nudge_x=2600, family="Helvetica")
 
 
 ggsave(file = paste0(homewd, "/final-figures/Fig4B.png"),
@@ -212,8 +213,8 @@ ggsave(file = paste0(homewd, "/final-figures/Fig4B.png"),
 #and to find the MRCA
 #divergence of AngV:
 
-nodebranchAngV = MRCA(tree, which(tree@phylo$tip.label == "AngV | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "HQ660129 | GhV | Ghana | 2009 | Eidolon_helvum"))
-nodeBasal = MRCA(tree, which(tree@phylo$tip.label == "AngV | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "KF278639 | MojV | China | 2012 | Rattus_rattus"))
+nodebranchAngV = MRCA(tree, which(tree@phylo$tip.label == "ON613535 | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "HQ660129 | GhV | Ghana | 2009 | Eidolon_helvum"))
+nodeBasal = MRCA(tree, which(tree@phylo$tip.label == "ON613535 | AngV | Madagascar | 2019 | Eidolon_dupreanum"),which(tree@phylo$tip.label == "KF278639 | MojV | China | 2012 | Rattus_rattus"))
 
 dat.phylo <- p3$data
 head(dat.phylo)
