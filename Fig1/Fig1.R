@@ -75,6 +75,8 @@ p1<-ggplot() +
 dat <- read.csv(file = paste0(homewd,"/metadata/NGS_urine_metadat.csv"), header = T, stringsAsFactors = F )
 head(dat)
 
+length(unique(dat$sampleid))#206
+
 #only plot urine
 dat = subset(dat, sample_type=="urine")# & bat_species=="Eidolon dupreanum") 206 
 
@@ -88,11 +90,28 @@ dat$latitude_s[dat$roost_site=="AngavoBe"] <- -19.2
 unique(dat$bat_age_class)
 
 #and rank by rough age
-unique(dat$young_of_year)
+#unique(dat$young_of_year)
 dat$age_class <- dat$bat_age_class
 dat$age_class[dat$age_class=="P" | dat$age_class=="L"] <- "A"
 dat$age_class[dat$age_class=="NL" | dat$young_of_year=="no"] <- "A"
 dat$age_class[dat$young_of_year=="yes"] <- "J"
+
+#collapse to just one entry per individual (a few bats gave multiple urine specimens)
+bat.double = subset(dat, sampleid=="MIZ151" |sampleid=="MIZ275" | sampleid=="MIZ281" |sampleid=="MIZ298" |sampleid=="MIZ300" | sampleid=="MIZ305a" | sampleid=="MIZ305b")
+unique(bat.double$henipavirus) #all negative.
+
+doub.list <- dlply(bat.double, .(sampleid))
+condense.dat <- function(df){
+  df1 <- df[1,]
+  return(df1)
+  
+}
+bat.slim <- data.table::rbindlist(lapply(doub.list, condense.dat))
+
+
+#now collapse those duplicates into one entry for the table
+bat.single = subset(dat, sampleid!="MIZ151" &sampleid!="MIZ275" & sampleid!="MIZ281" &sampleid!="MIZ298" &sampleid!="MIZ300" & sampleid!="MIZ305a" & sampleid!="MIZ305b")
+dat <- rbind(bat.single, bat.slim)
 
 # now subset the data to just include the columns of interest
 
