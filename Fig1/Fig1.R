@@ -245,7 +245,7 @@ colz = c('henipavirus pos' ="firebrick3", 'henipavirus neg' ="dodgerblue")
 
 
 Fig1a <- p1+
-  annotate("segment", x=pies$longitude_e, xend=pies$x2,y=pies$latitude_s,yend=pies$y2,size=.7)+ # put the lines
+  annotate("segment", x=pies$longitude_e, xend=pies$x2,y=pies$latitude_s,yend=pies$y2,size=.5, linetype=5, color="black")+ # put the lines
   geom_point(aes(x=longitude_e, y=latitude_s, fill=bat_species, shape = bat_species), color="black", stroke=1,
              size=3.5,data=coordinate)+
   scale_shape_manual(values=shapez, guide=guide_legend(label.theme=element_text(face="italic", angle = 0, size=10))) +
