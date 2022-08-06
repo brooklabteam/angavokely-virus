@@ -149,15 +149,17 @@ font_import()
 
 p2 <- p1 %<+% mergedat + 
   #geom_tiplab(size=3, nudge_x = 500) + #geom_nodelab(size=2,nudge_x = -15, nudge_y = .7) +
-  theme(legend.position = c(.16,.75)) +
+  theme(legend.position = c(.13,.75),
+        axis.title.x = element_text(size=13),
+        axis.text.x = element_text(size = 11))+
   geom_range(range='height_0.95_HPD', color='red', alpha=.5, size=1) +
   geom_nodepoint(aes(fill=posterior), shape=21, color="black", size=2, stroke=.1) +
   geom_tippoint(aes(color=virus), size=3) +
   scale_fill_manual(values=posfilz) +
   guides( fill_continuous = guide_legend(order = 2, nrow = 1),col = guide_legend(order = 1)) +
-  coord_cartesian(clip = "off", xlim=c(-14500, 20000)) +ggnewscale::new_scale_fill() +
+  coord_cartesian(clip = "off", xlim=c(-14500, 21000)) +ggnewscale::new_scale_fill() +
   geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
-              alpha=.3,  show.legend=F, size=3.5, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
+              alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
 
 
 
@@ -192,17 +194,17 @@ p2.9 <- p2.8 +
 
 
 
-p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | Sus_scrofa/Canis_familiaris/Homo_sapiens"), geom="label", size=2,  label.size = 0, nudge_x=4400, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="label",size=2,  label.size = 0, nudge_x=4000, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="label", size=2,  label.size = 0, nudge_x=3500, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeNiVBangHum), label = "NiV | Bangladesh | 2004-2014 | Homo_sapiens"), geom="label", size=2,  label.size = 0,  nudge_x=3400, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeNiVBangHum2), label = "NiV | Bangladesh/India | 2004-2015 | Homo_sapiens"),geom="label", size=2,  label.size = 0,  nudge_x=3600, family="Helvetica") +
-               geom_nodelab(aes(subset=(node==nodeHeV2007), label = "HeV | Australia | 2007 | Equus_f_caballus/Pteropus_sp"), geom="label", size=2,  label.size = 0,  nudge_x=3700, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="label", size=2,  label.size = 0,  nudge_x=4000, family="Helvetica")+
-               geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="label", size=2,  label.size = 0,  nudge_x=2600, family="Helvetica")
+p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | S_scrofa/C_familiaris/_sapiens"), geom="label", size=3.9,  label.size = 0, nudge_x=9500, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="label",size=3.9,  label.size = 0, nudge_x=10200, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="label", size=3.9,  label.size = 0, nudge_x=9000, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangHum), label = "NiV | Bangladesh | 2004-2014 | Homo_sapiens"), geom="label", size=3.9,  label.size = 0,  nudge_x=8400, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeNiVBangHum2), label = "NiV | Bangladesh/India | 2004-2015 | Homo_sapiens"),geom="label", size=3.9,  label.size = 0,  nudge_x=9300, family="Helvetica") +
+               geom_nodelab(aes(subset=(node==nodeHeV2007), label = "HeV | Australia | 2007 | Equus_f_caballus/Pteropus_sp"), geom="label", size=3.9,  label.size = 0,  nudge_x=9600, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="label", size=3.9,  label.size = 0,  nudge_x=9900, family="Helvetica")+
+               geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="label", size=3.9,  label.size = 0,  nudge_x=6700, family="Helvetica")
 
 
-ggsave(file = paste0(homewd, "/final-figures/Fig4B.png"),
+ggsave(file = paste0(homewd, "/Fig4/Fig4B.png"),
        plot=p3,
        units="mm",  
        width=70, 
