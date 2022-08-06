@@ -280,11 +280,18 @@ Fig1a <- p1+
 ggsave(file = paste0(homewd, "/final-figures/Fig1.pdf"),
        plot=Fig1a,
        units="mm",  
-       width=150, 
+       width=55, 
        height=65, 
        scale=3, 
        dpi=300)
 
 
+#other file types
 
-
+ggsave(file = paste0(homewd, "/final-figures/Fig1.tiff"),
+       plot=Fig1a,
+       units="mm",  
+       width=55, 
+       height=65, 
+       scale=3, 
+       dpi=300)
