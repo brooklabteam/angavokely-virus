@@ -290,8 +290,8 @@ ggsave(file = paste0(homewd, "/final-figures/Fig1.pdf"),
 
 ggsave(file = paste0(homewd, "/final-figures/Fig1.tiff"),
        plot=Fig1a,
-       units="mm",  
-       width=55, 
-       height=65, 
-       scale=3, 
-       dpi=300)
+       units="in",  
+       width=6.5, 
+       height=7, 
+       scale=1.1, 
+       dpi=400)
