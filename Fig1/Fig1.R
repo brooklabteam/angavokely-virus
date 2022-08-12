@@ -295,3 +295,12 @@ ggsave(file = paste0(homewd, "/final-figures/Fig1.tiff"),
        height=7, 
        scale=1.1, 
        dpi=400)
+
+
+ggsave(file = paste0(homewd, "/final-figures/Fig1.eps"),
+       plot=Fig1a,
+       units="in",  
+       width=6.5, 
+       height=7, 
+       scale=1.1, 
+       dpi=400)

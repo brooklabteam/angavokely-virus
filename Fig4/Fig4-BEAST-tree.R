@@ -147,11 +147,14 @@ nodeHeV2009 <- MRCA(tree, which(tree@phylo$tip.label == "JN255803 | HeV | Austra
 #make tip labels a little bigger
 font_import()
 
+#here is the original figure
 p2 <- p1 %<+% mergedat + 
   #geom_tiplab(size=3, nudge_x = 500) + #geom_nodelab(size=2,nudge_x = -15, nudge_y = .7) +
   theme(legend.position = c(.13,.75),
-        axis.title.x = element_text(size=13),
-        axis.text.x = element_text(size = 11))+
+        legend.text = element_text(size=12),
+        legend.title = element_text(size=12),
+        axis.title.x = element_text(size=12),
+        axis.text.x = element_text(size = 12))+
   geom_range(range='height_0.95_HPD', color='red', alpha=.5, size=1) +
   geom_nodepoint(aes(fill=posterior), shape=21, color="black", size=2, stroke=.1) +
   geom_tippoint(aes(color=virus), size=3) +
@@ -159,8 +162,27 @@ p2 <- p1 %<+% mergedat +
   guides( fill_continuous = guide_legend(order = 2, nrow = 1),col = guide_legend(order = 1)) +
   coord_cartesian(clip = "off", xlim=c(-14500, 21000)) +ggnewscale::new_scale_fill() +
   geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
-              alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
+                alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
 
+mergedat$virus[mergedat$virus=="CedPV"] <- "CedV"
+
+#here is the resized figure
+p2 <- p1 %<+% mergedat + 
+  #geom_tiplab(size=3, nudge_x = 500) + #geom_nodelab(size=2,nudge_x = -15, nudge_y = .7) +
+  theme(legend.position = c(.23,.85),
+        legend.text = element_text(size=18),
+        legend.title = element_text(size=18),
+        axis.title.x = element_text(size=18),
+        axis.text.x = element_text(size = 16))+
+  geom_range(range='height_0.95_HPD', color='red', alpha=.5, size=1) +
+  geom_nodepoint(aes(fill=posterior), shape=21, color="black", size=4, stroke=.1) +
+  geom_tippoint(aes(color=virus), size=5) +
+  scale_fill_manual(values=posfilz) +
+  guides( fill_continuous = guide_legend(order = 2, nrow = 1),col = guide_legend(order = 1)) +
+  coord_cartesian(clip = "off", xlim=c(-14500, 500)) #+ggnewscale::new_scale_fill() +
+#geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
+#           alpha=.3,  show.legend=F, size=10, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
+#alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
 
 
 
@@ -180,7 +202,7 @@ scales::hue_pal()(8)[8]
 #and the HeV color
 scales::hue_pal()(8)[6]
 
-
+#original figure
 #now add node labels for the clusters and color these nodes pink with s new symbol
 p2.9 <- p2.8 + 
         geom_point2(aes(subset=(node==nodeNiVbat)), shape=17, size=3, fill="#FF61CC", color="#FF61CC")+
@@ -193,7 +215,20 @@ p2.9 <- p2.8 +
   geom_point2(aes(subset=(node==nodeHeV2009)), shape=17, size=3, fill="#00A9FF", color="#00A9FF")
 
 
+#new figure
+#now add node labels for the clusters and color these nodes pink with s new symbol
+p2.9 <- p2.8 + 
+  geom_point2(aes(subset=(node==nodeNiVbat)), shape=17, size=6, fill="#FF61CC", color="#FF61CC")+
+  geom_point2(aes(subset=(node==nodeNiVIndia)), shape=17, size=6, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangBat)), shape=17, size=6, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangHum)), shape=17, size=6, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangHum2)), shape=17, size=6, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeHeV2007)), shape=17, size=6, fill="#00A9FF", color="#00A9FF") +
+  geom_point2(aes(subset=(node==nodeHeV1994)), shape=17, size=6, fill="#00A9FF", color="#00A9FF") +
+  geom_point2(aes(subset=(node==nodeHeV2009)), shape=17, size=6, fill="#00A9FF", color="#00A9FF")
 
+
+#original figure
 p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | S_scrofa/C_familiaris/_sapiens"), geom="label", size=3.9,  label.size = 0, nudge_x=9500, family="Helvetica")+
                geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="label",size=3.9,  label.size = 0, nudge_x=10200, family="Helvetica")+
                geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="label", size=3.9,  label.size = 0, nudge_x=9000, family="Helvetica")+
@@ -203,14 +238,31 @@ p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia
                geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="label", size=3.9,  label.size = 0,  nudge_x=9900, family="Helvetica")+
                geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="label", size=3.9,  label.size = 0,  nudge_x=6700, family="Helvetica")
 
-
-ggsave(file = paste0(homewd, "/Fig4/Fig4B.png"),
+#original figure
+ggsave(file = paste0(homewd, "/Fig4/Fig4Boriginal.png"),
        plot=p3,
        units="mm",  
        width=70, 
        height=80, 
        #limitsize = F,
        scale=3)#, 
+
+
+
+#resize
+ggsave(file = paste0(homewd, "/Fig4/Fig4Bresize.png"),
+       plot=p2.9,
+       units="in",  
+       width=2.7, 
+       height=7, 
+       dpi=400,
+       #limitsize = F,
+       scale=3)#, 
+
+
+
+
+
 
 #and to find the MRCA
 #divergence of AngV:
