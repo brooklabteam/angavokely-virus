@@ -147,7 +147,7 @@ nodeHeV2009 <- MRCA(tree, which(tree@phylo$tip.label == "JN255803 | HeV | Austra
 #make tip labels a little bigger
 font_import()
 
-#here is the original figure
+#here is the original figure for the poster
 p2 <- p1 %<+% mergedat + 
   #geom_tiplab(size=3, nudge_x = 500) + #geom_nodelab(size=2,nudge_x = -15, nudge_y = .7) +
   theme(legend.position = c(.13,.75),
@@ -163,6 +163,46 @@ p2 <- p1 %<+% mergedat +
   coord_cartesian(clip = "off", xlim=c(-14500, 21000)) +ggnewscale::new_scale_fill() +
   geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
                 alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
+
+p2.1 <- collapse(p2, node=nodeNiVbat) #this node is malaysia 1999 
+p2.2 <- collapse(p2.1, node=nodeNiVIndia) #this is India 2018/2019
+p2.3 <- collapse(p2.2, node=nodeNiVBangBat) #this is Bangladesh bats 2013
+p2.4 <- collapse(p2.3, node=nodeNiVBangHum) #this is Bangladesh humans 
+p2.5 <- collapse(p2.4, node=nodeNiVBangHum2) #this is Bangladesh humans 2
+p2.6 <- collapse(p2.5, node=nodeHeV2007) #this is 2007 horse and bat
+p2.7 <- collapse(p2.6, node=nodeHeV1994) # this is 1997 horse and human
+p2.8 <- collapse(p2.7, node=nodeHeV2009) # this is 2009 just bat
+
+
+p2.9 <- p2.8 + 
+  geom_point2(aes(subset=(node==nodeNiVbat)), shape=17, size=3, fill="#FF61CC", color="#FF61CC")+
+  geom_point2(aes(subset=(node==nodeNiVIndia)), shape=17, size=3, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangBat)), shape=17, size=3, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangHum)), shape=17, size=3, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeNiVBangHum2)), shape=17, size=3, fill="#FF61CC", color="#FF61CC") +
+  geom_point2(aes(subset=(node==nodeHeV2007)), shape=17, size=3, fill="#00A9FF", color="#00A9FF") +
+  geom_point2(aes(subset=(node==nodeHeV1994)), shape=17, size=3, fill="#00A9FF", color="#00A9FF") +
+  geom_point2(aes(subset=(node==nodeHeV2009)), shape=17, size=3, fill="#00A9FF", color="#00A9FF")
+
+p3 <- p2.9 + geom_nodelab(aes(subset=(node==nodeNiVbat), label = "NiV | Malaysia | 1999 | S_scrofa/C_familiaris/_sapiens"), geom="label", size=3.9,  label.size = 0, nudge_x=9500, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeNiVIndia), label = "NiV | India | 2018-2019 | Homo_sapiens/Pteropus_medius"), geom="label",size=3.9,  label.size = 0, nudge_x=10200, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeNiVBangBat), label = "NiV | Bangladesh | 2013 | Pteropus_medius"), geom="label", size=3.9,  label.size = 0, nudge_x=8000, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeNiVBangHum), label = "NiV | Bangladesh | 2004-2014 | Homo_sapiens"), geom="label", size=3.9,  label.size = 0,  nudge_x=8000, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeNiVBangHum2), label = "NiV | Bangladesh/India | 2004-2015 | Homo_sapiens"),geom="label", size=3.9,  label.size = 0,  nudge_x=8700, family="Helvetica") +
+  geom_nodelab(aes(subset=(node==nodeHeV2007), label = "HeV | Australia | 2007 | Equus_f_caballus/Pteropus_sp"), geom="label", size=3.9,  label.size = 0,  nudge_x=9000, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeHeV1994), label = "HeV | Australia | 1994 | Equus_f_caballus/Homo_sapiens"), geom="label", size=3.9,  label.size = 0,  nudge_x=9000, family="Helvetica")+
+  geom_nodelab(aes(subset=(node==nodeHeV2009), label = "HeV | Australia | 2009 | Pteropus_sp"), geom="label", size=3.9,  label.size = 0,  nudge_x=6700, family="Helvetica")
+
+#save for poster
+
+ggsave(file = paste0(homewd, "/Fig4/Fig4Bposter.pdf"),
+       plot=p3,
+       units="in",  
+       width=4.5, 
+       height=3.5, 
+       dpi=400,
+       #limitsize = F,
+       scale=2)#,
 
 mergedat$virus[mergedat$virus=="CedPV"] <- "CedV"
 
@@ -183,8 +223,6 @@ p2 <- p1 %<+% mergedat +
 #geom_tiplab(aes(fill = novel), geom = "label", label.size = 0, 
 #           alpha=.3,  show.legend=F, size=10, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
 #alpha=.3,  show.legend=F, size=3.8, nudge_x=500, family="Helvetica") + scale_fill_manual(values=colz2)
-
-
 
 
 p2.1 <- collapse(p2, node=nodeNiVbat) #this node is malaysia 1999 
@@ -259,6 +297,8 @@ ggsave(file = paste0(homewd, "/Fig4/Fig4Bresize.png"),
        #limitsize = F,
        scale=3)#, 
 
+#and for the poster
+ 
 
 
 
